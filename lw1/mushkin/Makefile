@@ -8,6 +8,7 @@ build: 1.hs
 	$(GHC) 2.hs -o bin/2
 	$(GHC) 3.hs -o bin/3
 	$(GHC) 4.hs -o bin/4
+	$(GHC) 5.hs -o bin/5
 
 clean:
 	rm -rf *.hi *.o bin/

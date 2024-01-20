@@ -1,3 +1,5 @@
+-- https://oeis.org/A000217
+
 main :: IO ()
 
 triangle_nums :: Int -> [Int]
