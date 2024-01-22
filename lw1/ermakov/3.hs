@@ -1,8 +1,8 @@
 oddNumbers3 :: Int -> [Int]
 oddNumbers3 count = takeOdd 1 count
-  where
-    takeOdd n 0 = []
-    takeOdd n c = n : takeOdd (n + 2) (c - 1)
+    where
+        takeOdd n 0 = []
+        takeOdd n c = n : takeOdd (n + 2) (c - 1)
 
 main :: IO ()
 main = do
