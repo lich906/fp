@@ -11,4 +11,4 @@ build: 1.hs 2.hs 3.hs 4.hs 5.hs
 	$(GHC) 5.hs -outputdir build/ -o build/5
 
 clean:
-	rm -r build/
+	rm -rf build/
