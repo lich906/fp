@@ -8,6 +8,3 @@ getPyramidalNumList x = if x == 1 then [1] else getPyramidalNumList (x - 1) ++ [
 
 main = do
     print (getPyramidalNumList 50)
-
-
-    
