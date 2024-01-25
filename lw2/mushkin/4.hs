@@ -1,9 +1,11 @@
 main :: IO()
 
+getPosition :: (Eq a) => [a] -> a -> Int -> Int
+getPosition [] _ _ = -1
+getPosition (x:xs) atom pos = if x == atom then pos else getPosition xs atom pos+1
+
 position :: (Eq a) => [a] -> a -> Int
-position list atom
-    | not (elem atom list) = -1 -- item is not in the list
-    | otherwise = until (\i -> list !! i == atom) (+1) 0
+position list atom = getPosition list atom 0
 
 main = do
     print (position [1, 2, 3, 4, 5] 4)

@@ -4,7 +4,6 @@ insert :: [a] -> a -> Int -> [a]
 insert list el pos
     | pos < 0 = error "position cannot be negative"
     | length list < pos = error "position exceeds list length"
-    | length list == pos = list ++ [el]
     | otherwise = before ++ [el] ++ after
     where
         before = take pos list
