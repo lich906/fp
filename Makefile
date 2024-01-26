@@ -12,6 +12,7 @@ lw1:
 .PHONY: lw2
 lw2:
 	cd lw2/mushkin && make
+	cd lw2/zamyatin && make
 
 .PHONY: lw3
 lw3:
