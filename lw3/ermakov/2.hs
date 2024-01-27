@@ -1,6 +1,8 @@
 main :: IO()
 
 secondlastlist :: [[a]] -> [a]
-secondlastlist inputList = map last inputList
+secondlastlist (x:xs)
+    | null x = []
+    | otherwise = [last x] ++ secondlastlist xs
 
-main = print $ secondlastlist [[1,2,3],[4,5,6]]
+main = print $ secondlastlist [[1,2,3],[]]
