@@ -9,6 +9,11 @@ lw1:
 	cd lw1/ermakov && make
 	cd lw1/zamyatin && make
 
+.PHONY: lw2
+lw2:
+	cd lw2/mushkin && make
+	cd lw2/zamyatin && make
+
 clean:
 	cd lw1/mushkin && make clean
 	cd lw1/ermakov && make clean
