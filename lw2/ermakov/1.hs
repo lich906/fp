@@ -1,14 +1,7 @@
-import Data.List
-
-reverseList :: [a] -> [a]
-reverseList xs = foldl (\x y -> y:x) [] xs
-
 oddEven :: [a] -> [a]
-oddEven xs = reversePairs xs
-    where
-        reversePairs [] = []
-        reversePairs [x] = [x]
-        reversePairs (x:y:xs) = reverseList [x, y] ++ reversePairs xs
+oddEven [] = []
+oddEven [x] = [x]
+oddEven (x:y:xs) = y:[x] ++ oddEven xs
 
 main :: IO()
 

@@ -1,5 +1,5 @@
 position :: Eq a => [a] -> a -> Int
-position lst element = positionHelper lst element 0
+position list element = positionHelper list element 0
   where
     positionHelper [] _ _ = -1
     positionHelper (x:xs) element index
