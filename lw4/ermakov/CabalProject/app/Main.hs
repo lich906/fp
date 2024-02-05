@@ -6,7 +6,7 @@ import qualified Data.Set as Set
 
 main :: IO ()
 main = do
-  _ <- runTestTT $ TestList [testMyIntersperse, testMyTranspose, testMyFromList, testMyPartition]
+  _ <- runTestTT $ TestList [testMyIntersperse, testMyTranspose, testMyFromList, testMyPartition, testMyIntercalate]
   return ()
 
 testMyIntersperse = TestLabel "Test myIntersperse" $ TestList
@@ -43,7 +43,7 @@ testMyPartition = TestLabel "Test myPartition" $ TestList
   ]
 
 testMyIntercalate = TestLabel "Test myIntercalate" $ TestList
-  [ "Empty sublists" ~: "" ~=? myIntercalate "," ["", "", ""]
+  [ "Empty sublists" ~: ",," ~=? myIntercalate "," ["", "", ""]
   , "Single element sublists" ~: "a,b,c" ~=? myIntercalate "," ["a", "b", "c"]
   , "Mixed sublists" ~: "abc,def,ghi" ~=? myIntercalate "," ["abc", "def", "ghi"]
   , "Intersperse lists" ~: "1,2,3" ~=? myIntercalate "," ["1", "2", "3"]
