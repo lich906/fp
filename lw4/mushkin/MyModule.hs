@@ -1,6 +1,6 @@
 module MyModule where
 
-import Prelude(Bool, Ord, Eq, not, otherwise, fst, any, (==), (++), (.))
+import Prelude(Bool, Ord, Eq, Char, elem, not, otherwise, fst, any, (==), (++), (.))
 import qualified Data.List as List
 import qualified Data.Map as Map
 import qualified Data.Set as Set
@@ -37,3 +37,9 @@ member :: (Eq k) => k -> Map.Map k v -> Bool
 member k m = any ((==k) . fst) (Map.toList m)
 
 -- Data.Set.insert
+insert :: (Ord a) => a -> Set.Set a -> Set.Set a
+insert v s = Set.fromList (v : (Set.toList s))
+
+-- Data.Char.isUpper
+isUpper :: Char -> Bool
+isUpper c = elem c ['A'..'Z']
