@@ -2,3 +2,4 @@
 *.o
 build/
 .idea
+dist-newstyle/
