@@ -6,7 +6,7 @@ main :: IO()
 main = do
     print $ MyModule.zip [1, 2, 3, 4, 5] [6, 7, 8] -- [(1,6),(2,7),(3,8)]
 
-    print $ MyModule.delete 'h' "hi out there!" -- "i out here!"
+    print $ MyModule.delete 't' "hi out there!" -- "hi ou there!"
 
     print $ MyModule.break (==4) [1, 2, 3, 4, 5, 6, 7] -- ([1,2,3],[4,5,6,7])
 

@@ -15,7 +15,7 @@ zip (x:xs) (y:ys) = (x,y) : zip xs ys
 delete :: (Eq a) => a -> [a] -> [a]
 delete _ [] = []
 delete v (x:xs)
-    | v == x = delete v xs
+    | v == x = xs
     | otherwise = x:delete v xs
 
 -- Data.List.break
