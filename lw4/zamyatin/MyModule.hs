@@ -20,7 +20,8 @@ myDifference a b = Set.filter (\x -> x `notMember` b) a
 
 --реализация Data.Char.ToUpper
 myToUpper :: Char -> Char
-myToUpper a = if isUpper a || not (isAlpha a) then a else chr (ord a - 32)
+myToUpper a | isUpper a || not (isAlpha a) = a
+            | otherwise = chr (ord a - 32)
 
 --реализация Data.Char.IsLetter
 myIsLetter :: Char -> Bool
