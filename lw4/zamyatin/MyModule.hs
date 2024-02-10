@@ -8,11 +8,12 @@ import Data.Char as Char
 myIntersect :: Eq a => [a] -> [a] ->[a]
 myIntersect xs ys  = Prelude.filter (\x -> x `elem` ys) xs
 
---реализация Data.Map.Filter
+--реализация Data.List.Filter
 myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter _ []  = []
-myFilter p (x:xs)   | p x = x : myFilter p xs
-                    | otherwise = myFilter p xs
+myFilter p (x:xs)
+    | p x = x : myFilter p xs
+    | otherwise = myFilter p xs
 
 --реализация Data.Set.Difference
 myDifference :: Ord a => Set.Set a -> Set.Set a -> Set.Set a
