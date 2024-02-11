@@ -45,15 +45,18 @@ dispatch file = [
 
 processInput :: String -> String -> IO Bool
 processInput file "" = return True
-processInput file input = do
-    let (command:args) = words input
-    case command of
-        "exit" -> putStrLn "Bye." >> return False
-        _ -> do
-            let maybeAction = lookup command (dispatch file)
-            case maybeAction of
-                Nothing -> putStrLn ("Unknown command '"++command++"'") >> return True
-                Just action -> action args >> return True
+processInput file input
+    | length inputParts == 0 = return True
+    | otherwise = do
+        let (command:args) = inputParts
+        case command of
+            "exit" -> putStrLn "Bye." >> return False
+            _ -> do
+                let maybeAction = lookup command (dispatch file)
+                case maybeAction of
+                    Nothing -> putStrLn ("Unknown command '"++command++"'") >> return True
+                    Just action -> action args >> return True
+    where inputParts = words input
 
 mainLoop :: FilePath -> IO ()
 mainLoop file = do
@@ -66,6 +69,6 @@ main = do
     args <- getArgs
     progName <- getProgName
     if (length args /= 1) then error ("Invalid arguments.\nUsage: "++progName++" INPUT_FILE\n") else return()
-    let file = (head args)
+    let (file:_) = args
     help []
     mainLoop file

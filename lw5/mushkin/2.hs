@@ -10,7 +10,9 @@ data Args = Args {
 parseArgs :: String -> [String] -> Maybe Args
 parseArgs progName args
     | length args /= 2 = Nothing
-    | otherwise = Just $ Args (head args) (last args)
+    | otherwise = do
+        let (inFile:outFile:_) = args
+        Just $ Args inFile outFile
 
 copyReplaceFiles :: String -> String -> Char -> IO ()
 copyReplaceFiles inFile outFile replaceChar = do
