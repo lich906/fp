@@ -30,7 +30,7 @@ myIntercalate xs xss = concat (myIntersperse xs xss)
 
 -- Функция, проверяющая, является ли символ шестнадцатеричной цифрой
 myIsHexDigit :: Char -> Bool
-myIsHexDigit c = (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F')
+myIsHexDigit c = elem c "0123456789abcdefABCDEF"
 
 data Map k v = Empty
              | Node k v (Map k v) (Map k v)
