@@ -15,7 +15,6 @@ parseArgs progName args
 copyReplaceFiles :: String -> String -> Char -> IO ()
 copyReplaceFiles inFile outFile replaceChar = do
     content <- readFile inFile
-    putStr ("Source content:\n"++content)
     writeFile outFile (replace content replaceChar)
     where
         replace :: String -> Char -> String
