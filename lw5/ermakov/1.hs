@@ -1,8 +1,13 @@
 import System.Environment
 import Data.List
 
+nextMultiple :: Int -> Int -> Int
+nextMultiple start multi = start + (multi - (start `mod` multi)) `mod` multi
+
 generateList :: Int -> Int -> Int -> [Int]
-generateList start count mult = take count [start, start + mult ..]
+generateList start count mult = do
+   let startMultiple = nextMultiple start mult
+   take count [startMultiple, startMultiple + mult ..]
 
 main = do
    args <- getArgs
