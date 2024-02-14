@@ -4,6 +4,7 @@ takeLeftover :: [a] -> t -> [a]
 takeLeftover [] _ = []
 takeLeftover (x:xss) _ = xss
 
+--возвращает список из N последних элементов
 lastN' :: Int -> [a] -> [a]
 lastN' n xs = foldl' takeLeftover xs (drop n xs)
 
@@ -17,7 +18,6 @@ partitionN :: [a] -> Int ->[[a]]
 partitionN  [] _ = []
 partitionN xs n | length xs `mod` n == 0 = partitionNImpl [xs] (length xs `div` n )
                 | otherwise = partitionNImpl [xs] ((length xs `div` n ) + 1)
-
 
 main :: IO()
 main = print (partitionN [1,2,3,4,5] 2)
