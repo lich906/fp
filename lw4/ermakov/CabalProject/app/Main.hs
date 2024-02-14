@@ -3,10 +3,11 @@ module Main where
 import MyModule
 import Test.HUnit
 import qualified Data.Set as Set
+import qualified Data.List as List
 
 main :: IO ()
 main = do
-  _ <- runTestTT $ TestList [testMyIntersperse, testMyTranspose, testMyFromList, testMyPartition, testMyIntercalate]
+  _ <- runTestTT $ TestList [testMyIntersperse, testMyTranspose, testMyFromList, testMyPartition, testMyIntercalate, testIsHexDigit, testMember]
   return ()
 
 testMyIntersperse = TestLabel "Test myIntersperse" $ TestList
@@ -47,4 +48,26 @@ testMyIntercalate = TestLabel "Test myIntercalate" $ TestList
   , "Single element sublists" ~: "a,b,c" ~=? myIntercalate "," ["a", "b", "c"]
   , "Mixed sublists" ~: "abc,def,ghi" ~=? myIntercalate "," ["abc", "def", "ghi"]
   , "Intersperse lists" ~: "1,2,3" ~=? myIntercalate "," ["1", "2", "3"]
+  ]
+
+testIsHexDigit = TestLabel "Test isHexDigit" $ TestList
+  [ "Digit 1" ~: True ~=? myIsHexDigit '1'
+  , "Digit a" ~: True ~=? myIsHexDigit 'a'
+  , "Digit A" ~: True ~=? myIsHexDigit 'A'
+  , "Non-digit G" ~: False ~=? myIsHexDigit 'G'
+  , "Non-digit g" ~: False ~=? myIsHexDigit 'g'
+  , "Digit 9" ~: True ~=? myIsHexDigit '9'
+  , "Digit f" ~: True ~=? myIsHexDigit 'f'
+  , "Digit F" ~: True ~=? myIsHexDigit 'F'
+  , "Non-digit @" ~: False ~=? myIsHexDigit '@'
+  , "Non-digit `" ~: False ~=? myIsHexDigit '`'
+  ]
+
+testMember = TestList
+  [
+    "Empty map" ~: False ~=? myMember 1 Empty,
+    "Single node, present" ~: True ~=? myMember 1 (Node 1 "one" Empty Empty),
+    "Single node, absent" ~: False ~=? myMember 2 (Node 1 "one" Empty Empty),
+    "Left heavy, present" ~: True ~=? myMember 1 (Node 2 "two" (Node 1 "one" Empty Empty) Empty),
+    "Balanced, absent" ~: False ~=? myMember 4 (Node 2 "two" (Node 1 "one" Empty Empty) (Node 3 "three" Empty Empty))
   ]
