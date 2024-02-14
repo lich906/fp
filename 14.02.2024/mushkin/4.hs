@@ -9,7 +9,6 @@ type WordsMap = Map.Map String Int
 getWordsCount :: FilePath -> IO WordsMap
 getWordsCount file = do
    content <- readFile file
---   putStrLn content
    let wordsList = words content
    return $ foldl accountWord Map.empty wordsList
    where
